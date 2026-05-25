@@ -1,0 +1,25 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import tailwindConfig from '../../tailwind.config';
+
+export const c = resolveConfig(tailwindConfig).theme.colors;
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+<ColorPalette>
+  <ColorItem title="brand" colors={c.brand} />
+  <ColorItem title="gray" colors={c.gray} />
+  <ColorItem title="red" colors={c.red} />
+  <ColorItem title="blue" colors={c.blue} />
+  <ColorItem title="emerald" colors={c.emerald} />
+  <ColorItem title="violet" colors={c.violet} />
+  <ColorItem title="orange" colors={c.orange} />
+  <ColorItem title="pink" colors={c.pink} />
+</ColorPalette>
+
+<ColorPalette>
+  <ColorItem title="white" colors={{ white: c.white }} />
+  <ColorItem title="black" colors={{ black: c.black }} />
+</ColorPalette>

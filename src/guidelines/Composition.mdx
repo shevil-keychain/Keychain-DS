@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guidelines/Composition" />
+
+# Composition guidelines
+
+Cross-component rules for how Keychain components combine. Each rule lives here so we can point to it from any component doc — single source of truth.
+
+---
+
+## Grouped form controls
+
+Applies to: **Checkbox**, **Radio**, **Switch**, **toggle chips** — any group of selection controls bound to a `<fieldset>` / `<legend>` or equivalent heading.
+
+### Spacing
+
+| Where | Token | Value |
+|---|---|---|
+| Legend → first option | `mb-12` | 12 px |
+| Between vertical options (no subtext) | `gap-12` | 12 px |
+| Between vertical options (with subtext) | `gap-16` | 16 px |
+| Between horizontal options | `gap-24` (column) `gap-12` (row) | 24 / 12 px |
+
+The 12 px gap below the legend is non-negotiable — at smaller distances the legend reads as if it's labelling only the first option.
+
+### Orientation
+
+- **Vertical** — default. Use when options are ≥3 and labels can wrap. Scales to subtext.
+- **Horizontal** — only when options are short (≤2 words), there are 2–4 of them, and they fit on one line at the target width. Don't use horizontal with subtext unless each item gets its own card-like enclosure.
+
+### Markup
+
+Always wrap the group in a real `<fieldset>` with a `<legend>`. The legend gives screen readers the group label; the fieldset wires it to every control inside. Don't replace the legend with a styled `<div>` — keep the semantics and restyle the legend.
+
+```tsx
+<fieldset className="flex flex-col gap-12">
+  <legend className="text-sm text-fg mb-12 w-full">Status</legend>
+  <Checkbox label="Created" />
+  <Checkbox label="Scheduled" />
+  …
+</fieldset>
+```
+
+### Don't
+
+- Don't put the legend `inline` with the first option to save space — accessibility tooling treats it as label-for-control-1.
+- Don't change the legend's typography per group — it's always `text-sm text-fg`. If you need emphasis, lift the group into its own section with a heading above the fieldset.
+- Don't mix orientations inside a single form — stay consistent within one flow.

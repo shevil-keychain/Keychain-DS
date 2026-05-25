@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import tailwindConfig from '../../tailwind.config';
+
+export const theme = resolveConfig(tailwindConfig).theme;
+export const fontFamily = 'Inter, system-ui, sans-serif';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+## Sizes
+
+<div className="my-32 overflow-hidden rounded-8 border border-gray-200 bg-white">
+  {Object.entries(theme.fontSize).map(([size, value]) => {
+    const [fs, cfg] = Array.isArray(value) ? value : [value, {}];
+    const lh = typeof cfg === 'string' ? cfg : cfg?.lineHeight;
+    return (
+      <div key={size} className="flex items-baseline gap-40 border-b border-gray-200 px-32 py-24 last:border-b-0">
+        <div className="w-160 shrink-0">
+          <div className="whitespace-nowrap text-sm font-medium text-gray-900">text-{size}</div>
+          <div className="mt-4 whitespace-nowrap font-mono text-xs text-gray-500">
+            Size {fs}{lh ? ` · Line height ${lh}` : ''}
+          </div>
+        </div>
+        <span style={{ fontFamily, fontSize: fs, lineHeight: lh }}>
+          The quick brown fox jumps over the lazy dog
+        </span>
+      </div>
+    );
+  })}
+</div>
+
+## Weights
+
+<div className="my-32 overflow-hidden rounded-8 border border-gray-200 bg-white">
+  {Object.entries(theme.fontWeight).map(([name, value]) => (
+    <div key={name} className="flex items-baseline gap-40 border-b border-gray-200 px-32 py-24 last:border-b-0">
+      <div className="w-160 shrink-0">
+        <div className="whitespace-nowrap text-sm font-medium text-gray-900">font-{name}</div>
+        <div className="mt-4 whitespace-nowrap font-mono text-xs text-gray-500">{String(value)}</div>
+      </div>
+      <div className="text-xl text-gray-900" style={{ fontFamily, fontWeight: String(value) }}>
+        The quick brown fox
+      </div>
+    </div>
+  ))}
+</div>

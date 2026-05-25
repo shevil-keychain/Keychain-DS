@@ -1,0 +1,16 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SpacingBar, Sheet } from './components/ScaleSample';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import tailwindConfig from '../../tailwind.config';
+
+export const theme = resolveConfig(tailwindConfig).theme;
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing
+
+<Sheet>
+  {Object.entries(theme.spacing).map(([token, value]) => (
+    <SpacingBar key={token} token={`space-${token}`} value={String(value)} />
+  ))}
+</Sheet>

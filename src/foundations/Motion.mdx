@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DurationSample, EasingSample, Sheet } from './components/ScaleSample';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import tailwindConfig from '../../tailwind.config';
+
+export const theme = resolveConfig(tailwindConfig).theme;
+
+<Meta title="Foundations/Motion" />
+
+# Motion
+
+## Durations
+
+<Sheet>
+  {Object.entries(theme.transitionDuration).map(([token, value]) => (
+    <DurationSample
+      key={token}
+      token={`duration${token === 'DEFAULT' ? '' : `-${token}`}`}
+      value={String(value)}
+    />
+  ))}
+</Sheet>
+
+## Easing
+
+<Sheet>
+  {Object.entries(theme.transitionTimingFunction).map(([name, value]) => (
+    <EasingSample
+      key={name}
+      name={`ease${name === 'DEFAULT' ? '' : `-${name}`}`}
+      value={String(value)}
+    />
+  ))}
+</Sheet>

@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { RadiusSample, Sheet } from './components/ScaleSample';
+import { radii } from '../tokens/semantic';
+
+<Meta title="Foundations/Radii" />
+
+# Border Radius
+
+<Sheet>
+  {radii.tokens.map((t) => (
+    <RadiusSample
+      key={t.name}
+      token={t.class}
+      value={t.value}
+      description={t.description}
+    />
+  ))}
+</Sheet>
