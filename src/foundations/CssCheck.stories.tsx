@@ -1,5 +1,8 @@
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect } from 'storybook/test';
+
+void React;
 
 // Canary — proves Tailwind + global.css loaded in the test runner via brand yellow.
 function BrandChip() {
