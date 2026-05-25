@@ -25,8 +25,8 @@ export default meta;
 
 type Story = StoryObj<typeof BrandChip>;
 
-// Hex #FFEC44 → rgb(255, 236, 68)
-const BRAND_RGB = 'rgb(255, 236, 68)';
+// Hex #FDE047 → rgb(253, 224, 71)
+const BRAND_RGB = 'rgb(253, 224, 71)';
 
 export const TailwindLoaded: Story = {
   play: async ({ canvas }) => {
